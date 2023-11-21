@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  disabledButton: boolean = true;
+  password: any = '';
+  name: any = '';
+
+  disabledSubmit() {
+    return this.password.length > 5 && this.name.length > 5;
+  }
+
+  login() {
+    console.log('enter');
+  }
 }
