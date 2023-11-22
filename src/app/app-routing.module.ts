@@ -7,11 +7,11 @@ import { RecoverPasswordComponent } from './recover-password/recover-password.co
 import { authGuard } from './guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'graph', component: GraphComponent, canActivate:[authGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'recover-password', component: RecoverPasswordComponent },
-  { path: '**', redirectTo: 'register'}
+  { path: '**', redirectTo: 'login'}
 ];
 
 @NgModule({

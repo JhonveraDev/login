@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-graph',
@@ -7,12 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./graph.component.scss']
 })
 export class GraphComponent {
-  constructor(private _router: Router) {
-
-  }
+  constructor(private _router: Router, private _authService: AuthService) {}
 
   logOut() {
-    sessionStorage.removeItem("token");
+    this._authService.loggedOut();
     this._router.navigate(['login']);
   }
 }
