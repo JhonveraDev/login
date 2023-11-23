@@ -8,6 +8,7 @@ import { GraphComponent } from './graph/graph.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { FormsModule } from '@angular/forms';
+import { AddDataComponent } from './graph/add-data/add-data.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     GraphComponent,
     RegisterComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
+    AddDataComponent
   ],
   imports: [
     BrowserModule,
