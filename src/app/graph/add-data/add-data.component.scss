@@ -1,0 +1,112 @@
+.add {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  border: 1px solid var(--title-color);
+  padding: 1rem 0;
+  flex-direction: column;
+}
+
+.add_fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.add_field {
+  display: flex;
+  flex-direction: column;
+}
+
+.add__label {
+  display: block;
+  color: var(--title-color);
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: 0.25rem;
+}
+
+.add__input {
+  border: 2.5px solid var(--text-color);
+  padding: 1rem;
+  font-size: var(--small-font-size);
+}
+
+.add__input {
+  width: 100%;
+  padding: 14px 12px;
+  border-radius: 6px;
+  border: 2px solid var(--text-color);
+  background-color: hsla(244, 16%, 92%, 0.6);
+  color: var(--title-color);
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  transition: border 0.4s;
+}
+
+.add__input::placeholder {
+  color: var(--text-color);
+}
+
+.add__input:focus,
+.add__input:valid {
+  border: 2px solid var(--first-color);
+}
+
+.add__box .add__input {
+  padding-right: 36px;
+}
+
+.add__description,
+.add__label,
+.add__button {
+  font-size: var(--normal-font-size);
+}
+
+.login__buttons {
+  display: flex;
+  column-gap: 0.75rem;
+}
+
+.login__button {
+  width: 100%;
+  padding: 14px 2rem;
+  border-radius: 6px;
+  color: #fff;
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.login__button-ghost {
+  background: hsla(244, 16%, 92%, 0.6);
+  border: 2px solid var(--first-color);
+  color: var(--first-color);
+  box-shadow: none;
+}
+
+.login__button-disabled {
+  background: hsla(244, 16%, 92%, 0.6);
+  cursor: not-allowed;
+}
+
+.login__button-active {
+  background: linear-gradient(180deg, var(--first-color), var(--second-color));
+  box-shadow: 0 6px 24px hsla(244, 75%, 48%, 0.5);
+}
+
+.login__button {
+  padding-block: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.login__button-ghost {
+  border: 2.5px solid var(--first-color);
+}
+
+@media (min-width: 768px) {
+  .add_fields {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

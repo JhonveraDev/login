@@ -1,4 +1,36 @@
-.login__buttons {
+.container {
+  height: 100%;
+}
+
+.header {
   display: flex;
-  column-gap: 0.75rem;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid var(--title-color);
+}
+
+.header__info {
+  display: flex;
+  gap: 1rem;
+}
+.header__title {
+  color: var(--title-color);
+  font-size: var(--h2-font-size);
+  margin-bottom: 0.5rem;
+}
+
+.header__title span {
+  color: var(--first-color);
+}
+
+.header__description {
+  font-size: var(--h2-font-size);
+}
+
+.header__button {
+  cursor: pointer;
+  color: var(--first-color);
+  font-size: var(--small-font-size);
+  display: flex;
+  align-items: center;
 }

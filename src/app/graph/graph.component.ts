@@ -8,6 +8,7 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./graph.component.scss']
 })
 export class GraphComponent {
+  name: string = 'Pepito Perez';
   constructor(private _router: Router, private _authService: AuthService) {}
 
   logOut() {

@@ -1,9 +1,26 @@
-<div class="">
+<!-- <div class="">
   <div class="">
     <h1>Nombre</h1>
-    <button type="button" class="login__button" (click)="logOut()">
+
+  </div>
+</div> -->
+<div class="container">
+  <div class="header">
+    <div class="header__info">
+      <h1 class="header__title"><span>WELCOME</span> BACK</h1>
+      <p class="header__description">{{name | uppercase}}</p>
+    </div>
+    <span class="header__button" (click)="logOut()">
       Log Out
-    </button>
+    </span>
+  </div>
+
+  <div class="main">
+    <app-add-data></app-add-data>
+
+    <!-- Tabla -->
+    <!-- grafica -->
   </div>
 </div>
-<!-- <app-add-data></app-add-data> -->
+
+
