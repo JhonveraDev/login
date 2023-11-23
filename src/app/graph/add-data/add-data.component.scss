@@ -1,19 +1,25 @@
-.add {
+input,
+button {
+  font-family: var(--body-font);
+  border: none;
+  outline: none;
+}
+
+.add__inputs {
   display: flex;
-  justify-content: center;
+  row-gap: 10px;
+  flex-direction: row;
+}
+
+.add__section {
+  position: relative;
+  background-color: hsla(244, 16%, 92%, 0.6);
+  border: 2px solid hsla(244, 16%, 92%, 0.75);
+  margin-inline: 1.5rem;
+  backdrop-filter: blur(20px);
+  border-radius: 1rem;
   margin-top: 3rem;
-  border: 1px solid var(--title-color);
-  padding: 1rem 0;
-  flex-direction: column;
-}
-
-.add_fields {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-
-.add_field {
+  justify-content: center;
   display: flex;
   flex-direction: column;
 }
@@ -24,12 +30,6 @@
   font-size: var(--small-font-size);
   font-weight: var(--font-semi-bold);
   margin-bottom: 0.25rem;
-}
-
-.add__input {
-  border: 2.5px solid var(--text-color);
-  padding: 1rem;
-  font-size: var(--small-font-size);
 }
 
 .add__input {
@@ -53,22 +53,19 @@
   border: 2px solid var(--first-color);
 }
 
+.add__box {
+  position: relative;
+}
+
 .add__box .add__input {
   padding-right: 36px;
 }
 
-.add__description,
-.add__label,
-.add__button {
-  font-size: var(--normal-font-size);
-}
-
-.login__buttons {
+.add__buttons {
   display: flex;
-  column-gap: 0.75rem;
 }
 
-.login__button {
+.add__button {
   width: 100%;
   padding: 14px 2rem;
   border-radius: 6px;
@@ -79,34 +76,91 @@
   cursor: pointer;
 }
 
-.login__button-ghost {
+.add__button-ghost {
   background: hsla(244, 16%, 92%, 0.6);
   border: 2px solid var(--first-color);
   color: var(--first-color);
   box-shadow: none;
 }
 
-.login__button-disabled {
-  background: hsla(244, 16%, 92%, 0.6);
-  cursor: not-allowed;
-}
-
-.login__button-active {
+.add__button-active {
   background: linear-gradient(180deg, var(--first-color), var(--second-color));
   box-shadow: 0 6px 24px hsla(244, 75%, 48%, 0.5);
 }
 
-.login__button {
-  padding-block: 1rem;
-  margin-bottom: 1.25rem;
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+
+@media screen and (max-width: 360px) {
+  .add__buttons {
+    flex-direction: column;
+  }
 }
 
-.login__button-ghost {
-  border: 2.5px solid var(--first-color);
+/* For medium devices */
+
+@media screen and (min-width: 576px) {
+  .add__section {
+    width: 770px;
+    justify-self: center;
+  }
 }
 
-@media (min-width: 768px) {
-  .add_fields {
-    grid-template-columns: repeat(3, 1fr);
+/* For large devices */
+
+@media screen and (min-width: 1064px) {
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
+
+  .add__content {
+    width: 1024px;
+    height: 600px;
+  }
+
+  .add__section {
+    justify-self: flex-end;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .add__content {
+    height: 700px;
+  }
+
+  .add__section {
+    row-gap: 2rem;
+    padding: 3rem;
+    border-radius: 1.25rem;
+    border: 2.5px solid hsla(244, 16%, 92%, 0.75);
+  }
+
+  .add__description,
+  .add__label,
+  .add__button {
+    font-size: var(--normal-font-size);
+  }
+
+  .add__inputs {
+    column-gap: 1rem;
+  }
+
+  .add__input {
+    border: 2.5px solid var(--text-color);
+    padding: 1rem;
+    font-size: var(--small-font-size);
+  }
+
+  .add__input:focus,
+  .add__input:valid {
+    border: 2.5px solid var(--first-color);
+  }
+
+  .add__button {
+    padding-block: 1rem;
+    margin-bottom: 1.25rem;
   }
 }

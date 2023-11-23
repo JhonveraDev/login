@@ -1,26 +1,15 @@
-<!-- <div class="">
-  <div class="">
-    <h1>Nombre</h1>
-
-  </div>
-</div> -->
 <div class="container">
   <div class="header">
     <div class="header__info">
-      <h1 class="header__title"><span>WELCOME</span> BACK</h1>
-      <p class="header__description">{{name | uppercase}}</p>
+      <h1 class="header__title">
+        <span>WELCOME BACK, {{ name | uppercase }}</span>
+      </h1>
     </div>
-    <span class="header__button" (click)="logOut()">
-      Log Out
-    </span>
+    <button class="logout__button logout__button-ghost" (click)="logOut()">Log Out</button>
   </div>
-
   <div class="main">
     <app-add-data></app-add-data>
-
     <!-- Tabla -->
     <!-- grafica -->
   </div>
 </div>
-
-
