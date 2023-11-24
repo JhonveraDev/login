@@ -13,7 +13,7 @@ import { AuthService } from '../service/auth.service';
 export class LoginComponent {
   disabledButton: boolean = true;
   password: any = '';
-  name: any = '';
+  correo: any = '';
   // faEye: any = faEye;
   // faLock: any = faLock;
   showEye: boolean = true;
@@ -23,11 +23,11 @@ export class LoginComponent {
   }
 
   disabledSubmit() {
-    return this.password.length > 5 && this.name.length > 5;
+    return this.password && this.correo;
   }
 
   login() {
-    this._authService.Login(this.name, this.password).subscribe(res => {
+    this._authService.Login(this.correo, this.password).subscribe(res => {
       if (res) {
         this._router.navigate(['graph']);
       } else {

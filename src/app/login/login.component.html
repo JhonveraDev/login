@@ -3,40 +3,40 @@
     <img src="./../../assets/bg-login.png" alt="login imagen" class="login__img" />
     <form class="login__form">
       <div>
-        <h1 class="login__title"><span>Welcome</span> ADDEVSOFT</h1>
-        <p class="login__description">Please login to continue.</p>
+        <h1 class="login__title"><span>BIENVENIDO</span></h1>
+        <!-- <p class="login__description">Please login to continue.</p> -->
       </div>
       <div>
         <div class="login__inputs">
           <div>
-            <label for="name" class="login__label">Name</label>
-            <input type="text" id="name" [(ngModel)]="name" name="name" placeholder="Enter your Name"
+            <label class="login__label">Correo</label>
+            <input type="text" [(ngModel)]="correo" placeholder="usuario@correo.com" name="correo" id="correo"
               class="login__input" required />
           </div>
           <div>
-            <label for="password" class="login__label">Password</label>
+            <label for="password" class="login__label">Contraseña</label>
             <div class="login__box">
               <input type="password" id="password" [(ngModel)]="password" name="password"
-                placeholder="Enter your password" class="login__input" required />
+                placeholder="Contraseña" class="login__input" required />
               <!-- <fa-icon [icon]="faEye" class="login__icon" *ngIf="showEye" (click)="toggleEye()"></fa-icon>
                 <fa-icon [icon]="faLock" class="login__icon" *ngIf="!showEye" (click)="toggleEye()"></fa-icon> -->
             </div>
           </div>
         </div>
-        <div class="login__check">
+        <!-- <div class="login__check">
           <input type="checkbox" class="login__check-input" id="remember" />
           <label for="remember" class="login__check-label">Remember me</label>
-        </div>
+        </div> -->
       </div>
       <div>
         <div class="login__buttons">
           <button type="button" class="login__button" [disabled]="!disabledSubmit()" (click)="login()"
             [ngClass]="disabledSubmit() ? 'login__button-active' : 'login__button-disabled'">
-            Log In
+            Ingresar
           </button>
-          <button class="login__button login__button-ghost">Sign Up</button>
+          <button class="login__button login__button-ghost">Registrarse</button>
         </div>
-        <a href="#" class="login__forgot">Forgot Password?</a>
+        <!-- <a href="#" class="login__forgot">Forgot Password?</a> -->
       </div>
     </form>
   </div>

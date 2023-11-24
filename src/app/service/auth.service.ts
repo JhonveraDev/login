@@ -6,8 +6,8 @@ import { Observable, of } from 'rxjs';
 })
 export class AuthService {
 
-  fakeName = 'Anderson';
-  fakePassword = 'Hola123!';
+  fakeName = 'test@gmail.com';
+  fakePassword = '123456';
 
   constructor() { }
 
