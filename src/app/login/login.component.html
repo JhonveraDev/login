@@ -34,7 +34,7 @@
             [ngClass]="disabledSubmit() ? 'login__button-active' : 'login__button-disabled'">
             Ingresar
           </button>
-          <button class="login__button login__button-ghost">Registrarse</button>
+          <button class="login__button login__button-ghost" (click)="register()">Registrarse</button>
         </div>
         <!-- <a href="#" class="login__forgot">Forgot Password?</a> -->
       </div>

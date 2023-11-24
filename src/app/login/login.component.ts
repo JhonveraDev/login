@@ -43,4 +43,8 @@ export class LoginComponent {
   toggleEye() {
     this.showEye = !this.showEye;
   }
+
+  register() {
+    this._router.navigate(['register']);
+  }
 }
