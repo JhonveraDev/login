@@ -4,11 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { GraphComponent } from './graph/graph.component';
+import { GraphComponent } from './addevsoft/graph/graph.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { FormsModule } from '@angular/forms';
-import { AddDataComponent } from './graph/add-data/add-data.component';
+import { UpdateDataComponent } from './addevsoft/update-data/update-data.component';
+import { HeaderComponent } from './addevsoft/header/header.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AddDataComponent } from './graph/add-data/add-data.component';
     GraphComponent,
     RegisterComponent,
     RecoverPasswordComponent,
-    AddDataComponent
+    UpdateDataComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

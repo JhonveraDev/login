@@ -5,14 +5,14 @@ button {
   outline: none;
 }
 
-.add__inputs {
+.update__inputs {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.add__section {
+.update__section {
   position: relative;
   background-color: hsla(244, 16%, 92%, 0.6);
   border: 2px solid hsla(244, 16%, 92%, 0.75);
@@ -26,7 +26,7 @@ button {
   padding: 1rem;
 }
 
-.add__label {
+.update__label {
   display: block;
   color: var(--title-color);
   font-size: var(--small-font-size);
@@ -34,7 +34,7 @@ button {
   margin-bottom: 0.25rem;
 }
 
-.add__input {
+.update__input {
   width: 100%;
   padding: 14px 12px;
   border-radius: 6px;
@@ -46,28 +46,28 @@ button {
   transition: border 0.4s;
 }
 
-.add__input::placeholder {
+.update__input::placeholder {
   color: var(--text-color);
 }
 
-.add__input:focus,
-.add__input:valid {
+.update__input:focus,
+.update__input:valid {
   border: 2px solid var(--first-color);
 }
 
-.add__box {
+.update__box {
   position: relative;
 }
 
-.add__box .add__input {
+.update__box .update__input {
   padding-right: 36px;
 }
 
-.add__buttons {
+.update__buttons {
   display: flex;
 }
 
-.add__button {
+.update__button {
   width: 100%;
   padding: 14px 2rem;
   border-radius: 6px;
@@ -77,14 +77,14 @@ button {
   cursor: pointer;
 }
 
-.add__button-ghost {
+.update__button-ghost {
   background: hsla(244, 16%, 92%, 0.6);
   border: 2px solid var(--first-color);
   color: var(--first-color);
   box-shadow: none;
 }
 
-.add__button-active {
+.update__button-active {
   background: linear-gradient(180deg, var(--first-color), var(--second-color));
   box-shadow: 0 6px 24px hsla(244, 75%, 48%, 0.5);
 }
@@ -93,7 +93,7 @@ button {
 /* For small devices */
 
 @media screen and (max-width: 360px) {
-  .add__buttons {
+  .update__buttons {
     flex-direction: column;
   }
 }
@@ -101,7 +101,7 @@ button {
 /* For medium devices */
 
 @media screen and (min-width: 576px) {
-  .add__section {
+  .update__section {
     width: 60%;
     justify-self: center;
     margin: 0 auto;
@@ -110,18 +110,18 @@ button {
 }
 /* For medium devices */
 @media screen and (min-width: 768px) {
-  .add__inputs {
+  .update__inputs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (min-width: 1080px) {
-  .add__inputs {
+  .update__inputs {
     flex-direction: row;
   }
 
-  .add__button {
+  .update__button {
     width: 50%;
     margin: 0 auto;
   }
@@ -137,50 +137,50 @@ button {
     align-items: flex-start;
   }
 
-  .add__content {
+  .update__content {
     width: 1024px;
     height: 600px;
   }
 
-  .add__section {
+  .update__section {
     justify-self: flex-end;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .add__content {
+  .update__content {
     height: 700px;
   }
 
-  .add__section {
+  .update__section {
     row-gap: 2rem;
     padding: 3rem;
     border-radius: 1.25rem;
     border: 2.5px solid hsla(244, 16%, 92%, 0.75);
   }
 
-  .add__description,
-  .add__label,
-  .add__button {
+  .update__description,
+  .update__label,
+  .update__button {
     font-size: var(--normal-font-size);
   }
 
-  .add__inputs {
+  .update__inputs {
     column-gap: 1rem;
   }
 
-  .add__input {
+  .update__input {
     border: 2.5px solid var(--text-color);
     padding: 1rem;
     font-size: var(--small-font-size);
   }
 
-  .add__input:focus,
-  .add__input:valid {
+  .update__input:focus,
+  .update__input:valid {
     border: 2.5px solid var(--first-color);
   }
 
-  .add__button {
+  .update__button {
     padding-block: 1rem;
   }
 }
