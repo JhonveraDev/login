@@ -10,6 +10,7 @@ import { RecoverPasswordComponent } from './recover-password/recover-password.co
 import { FormsModule } from '@angular/forms';
 import { UpdateDataComponent } from './addevsoft/update-data/update-data.component';
 import { HeaderComponent } from './addevsoft/header/header.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,12 +21,14 @@ import { HeaderComponent } from './addevsoft/header/header.component';
     RegisterComponent,
     RecoverPasswordComponent,
     UpdateDataComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
