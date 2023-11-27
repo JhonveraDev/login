@@ -1,68 +1,54 @@
 <div class="container">
-  <div class="login__content">
-    <img src="./../../assets/bg-login.png" alt="login imagen" class="login__img" />
-    <form class="login__form">
+  <div class="register__content">
+    <img src="./../../assets/bg-login.png" alt="register imagen" class="register__img" />
+    <form class="register__form">
       <div>
-        <h1 class="login__title"><span>BIENVENIDO</span></h1>
-        <!-- <p class="login__description">Please login to continue.</p> -->
+        <h1 class="register__title"><span>REGISTRO</span></h1>
       </div>
       <div>
-        <div class="login__inputs">
+        <div class="register__inputs">
           <div>
-            <label class="login__label">Nombre</label>
-            <input type="text" placeholder="Nombre" name="nombre" id="nombre"
-              class="login__input" required />
+            <label class="register__label" for="name">Nombre</label>
+            <input type="text" placeholder="Nombre" name="name" id="name" class="register__input" required />
           </div>
           <div>
-            <label for="password" class="login__label">Apellido</label>
-            <div class="login__box">
-              <input type="password" id="apellidos" name="apellido"
-                placeholder="Contraseña" class="login__input" required />
-              <!-- <fa-icon [icon]="faEye" class="login__icon" *ngIf="showEye" (click)="toggleEye()"></fa-icon>
-                <fa-icon [icon]="faLock" class="login__icon" *ngIf="!showEye" (click)="toggleEye()"></fa-icon> -->
+            <label class="register__label" for="surname">Apellidos</label>
+            <div class="register__box">
+              <input type="text" id="surname" name="surname" placeholder="Apellidos" class="register__input"required />
             </div>
           </div>
           <div>
-            <label class="login__label">Fecha de nacimiento</label>
-            <input type="date" placeholder="01/01/2000" name="bornDate" id="bornDate"
-              class="login__input" required />
+            <label class="register__label" for="bornDate">Fecha de nacimiento</label>
+            <input type="date" placeholder="01/01/2000" name="bornDate" id="bornDate" class="register__input" required />
           </div>
           <div>
-            <label class="login__label">Tipo de documento</label>
-            <input type="text" placeholder="CC" name="tipoDocumento" id="tipoDocumento"
-              class="login__input" required />
+            <label class="register__label" for="documentType">Tipo de documento</label>
+            <input type="text" placeholder="C.C" name="documentType" id="documentType" class="register__input" required />
           </div>
           <div>
-            <label class="login__label">Número de documento</label>
-            <input type="text" placeholder="123456789" name="numeroDocumento" id="numeroDocumento"
-              class="login__input" required />
+            <label class="register__label" for="documentNumber">Número de documento</label>
+            <input type="number" placeholder="123456789" name="documentNumber" id="documentNumber" class="register__input" required />
           </div>
           <div>
-            <label class="login__label">Dirección</label>
-            <input type="text" placeholder="Dirección" name="direccion" id="direccion"
-              class="login__input" required />
+            <label class="register__label" for="address">Dirección</label>
+            <input type="text" placeholder="Dirección" name="address" id="address" class="register__input" required />
           </div>
           <div>
-            <label class="login__label">Correo electrónico</label>
-            <input type="text" placeholder="Email" name="email" id="email"
-              class="login__input" required />
+            <label class="register__label" for="email">Correo electrónico</label>
+            <input type="email" placeholder="Email" name="email" id="email" class="register__input" required />
+          </div>
+          <div>
+            <label class="register__label" for="salary">Salario</label>
+            <input type="number" placeholder="$ $ $" name="salary" id="salary" class="register__input" required />
           </div>
         </div>
-        <!-- <div class="login__check">
-          <input type="checkbox" class="login__check-input" id="remember" />
-          <label for="remember" class="login__check-label">Remember me</label>
-        </div> -->
       </div>
       <div>
-        <div class="login__buttons">
-          <button class="login__button login__button-ghost" (click)="register()">Registrarse</button>
-          <button type="button" class="login__button login__button-active"  (click)="login()">
-            Ingresar
-          </button>
+        <div class="register__buttons">
+          <button class="register__button register__button-ghost" (click)="register()">Registrarse</button>
+          <button type="button" class="register__button register__button-active" (click)="login()"> ¿Ya tienes una cuenta? </button>
         </div>
-        <!-- <a href="#" class="login__forgot">Forgot Password?</a> -->
       </div>
     </form>
   </div>
 </div>
-
