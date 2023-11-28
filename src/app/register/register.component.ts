@@ -29,14 +29,14 @@ export class RegisterComponent {
         icon: "success",
         title: "Correcto!",
         text: "Te has registrado correctamente!",
-      }); 
+      });
     } else {
       this.emptyFields();
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Por favor, verifica que todos los campos del formulario estén completos!",
-      });    
+      });
     }
   }
 
@@ -47,10 +47,6 @@ export class RegisterComponent {
         control.markAsTouched();
       }
     });
-  }
-
-  register() {
-    console.log('se registro exitosamente');
   }
 
   login() {

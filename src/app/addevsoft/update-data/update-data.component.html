@@ -1,42 +1,53 @@
 <app-header></app-header>
 <div class="container">
-  <div class="update__section">
-    <div class="update__inputs">
+  <div class="update__content">
+    <form class="update__form" [formGroup]="updateForm">
       <div>
-        <label class="update__label">Nombre</label>
-        <input type="text" name="name" placeholder="Nombre" class="update__input" required />
-      </div>
-      <div>
-        <label class="update__label">Apellido</label>
-        <input type="text" name="apellido" placeholder="Apellido" class="update__input" required />
+        <h1 class="update__title"><span>ACTUALIZAR DATOS</span></h1>
       </div>
       <div>
-        <label class="update__label">Fecha nacimiento</label>
-        <input type="date" name="bornDate" placeholder="01/01/2000" class="update__input" required />
+        <div class="update__inputs">
+          <div>
+            <label class="update__label" for="name">Nombre</label>
+            <input type="text" formControlName="name" placeholder="Nombre" id="name" class="update__input" required [ngClass]="{'empty-field': updateForm.get('name')?.invalid && updateForm.get('name')?.touched}"/>
+          </div>
+          <div>
+            <label class="update__label" for="surname">Apellidos</label>
+            <div class="update__box">
+              <input type="text" formControlName="surname" id="surname" placeholder="Apellidos" class="update__input"required [ngClass]="{'empty-field': updateForm.get('surname')?.invalid && updateForm.get('surname')?.touched}"/>
+            </div>
+          </div>
+          <div>
+            <label class="update__label" for="bornDate">Fecha de nacimiento</label>
+            <input type="date" formControlName="bornDate" placeholder="01/01/2000" id="bornDate" class="update__input" required [ngClass]="{'empty-field': updateForm.get('bornDate')?.invalid && updateForm.get('bornDate')?.touched}"/>
+          </div>
+          <div>
+            <label class="update__label" for="documentType">Tipo de documento</label>
+            <input type="text" formControlName="documentType" placeholder="C.C" id="documentType" class="update__input" required [ngClass]="{'empty-field': updateForm.get('documentType')?.invalid && updateForm.get('documentType')?.touched}"/>
+          </div>
+          <div>
+            <label class="update__label" for="documentNumber">Número de documento</label>
+            <input type="number" formControlName="documentNumber" placeholder="123456789" id="documentNumber" class="update__input" required [ngClass]="{'empty-field': updateForm.get('documentNumber')?.invalid && updateForm.get('documentNumber')?.touched}"/>
+          </div>
+          <div>
+            <label class="update__label" for="address">Dirección</label>
+            <input type="text" formControlName="address" placeholder="Dirección" id="address" class="update__input" required [ngClass]="{'empty-field': updateForm.get('address')?.invalid && updateForm.get('address')?.touched}"/>
+          </div>
+          <div>
+            <label class="update__label" for="email">Correo electrónico</label>
+            <input type="email" formControlName="email" placeholder="Email" id="email" class="update__input" required [ngClass]="{'empty-field': updateForm.get('email')?.invalid && updateForm.get('email')?.touched}"/>
+          </div>
+          <div>
+            <label class="update__label" for="salary">Salario</label>
+            <input type="number" formControlName="salary" placeholder="$ $ $" id="salary" class="update__input" required [ngClass]="{'empty-field': updateForm.get('salary')?.invalid && updateForm.get('salary')?.touched}"/>
+          </div>
+        </div>
       </div>
       <div>
-        <label class="update__label">Tipo de documento</label>
-        <input type="text" name="tipoDocumento" placeholder="CC" class="update__input" required />
+        <div class="update__buttons">
+          <button class="update__button update__button-ghost" (click)="onUpdate()">Actualizar Datos</button>
+        </div>
       </div>
-      <div>
-        <label class="update__label">Número de documento</label>
-        <input type="number" name="numeroDocumento" placeholder="123456789" class="update__input" required />
-      </div>
-      <div>
-        <label class="update__label">Dirección</label>
-        <input type="text" name="direccion" placeholder="Dirección" class="update__input" required />
-      </div>
-      <div>
-        <label class="update__label">Correo electrónico</label>
-        <input type="text" name="email" placeholder="Correo electrónico" class="update__input" required />
-      </div>
-    </div>
-    <div>
-      <div class="update__buttons">
-        <button type="button" class="update__button update__button-active">
-          GUARDAR
-        </button>
-      </div>
-    </div>
+    </form>
   </div>
 </div>

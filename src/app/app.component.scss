@@ -1,0 +1,7 @@
+.container {
+  background: rgb(229, 229, 254);
+  background: linear-gradient(24deg, var(--first-background-color) 0%, var(--second-background-color) 100%);
+  font-family: var(--body-font);
+  color: var(--text-color);
+  height: 100vh;
+}
