@@ -12,6 +12,8 @@ import { UpdateDataComponent } from './addevsoft/update-data/update-data.compone
 import { HeaderComponent } from './addevsoft/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-
+    CanvasJSAngularChartsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

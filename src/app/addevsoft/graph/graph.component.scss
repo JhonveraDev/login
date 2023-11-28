@@ -1,0 +1,44 @@
+.graph__section {
+  position: relative;
+  background-color: hsla(244, 16%, 92%, 0.6);
+  border: 2px solid hsla(244, 16%, 92%, 0.75);
+  margin-inline: 1.5rem;
+  backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  margin-top: 3rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+@media screen and (min-width: 576px) {
+  .graph__section {
+    width: 60%;
+    justify-self: center;
+    margin: 0 auto;
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (min-width: 1064px) {
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .graph__section {
+    justify-self: flex-end;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .graph__section {
+    row-gap: 2rem;
+    padding: 3rem;
+    border-radius: 1.25rem;
+    border: 2.5px solid hsla(244, 16%, 92%, 0.75);
+  }
+}
