@@ -11,6 +11,9 @@ import { HttpClient } from '@angular/common/http';
 export class GraphComponent {
   dataPoints:any = [];
   chart:any;
+  minValue: any;
+  maxValue: any;
+  profits: number = 0;
 
   chartOptions = {
     theme: "light2",
@@ -49,6 +52,9 @@ export class GraphComponent {
         this.dataPoints.push({x: new Date(data[i].date), y: Number(data[i].close) });
       }
       this.chart.subtitles[0].remove();
+      this.minValue = this.dataPoints[0];
+      this.maxValue = this.dataPoints[this.dataPoints.length - 1];
+      this.profits = Number(this.maxValue.y - this.minValue.y);
     });
   }
 

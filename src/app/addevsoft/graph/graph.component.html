@@ -1,6 +1,33 @@
 <app-header></app-header>
 <div class="container">
+
   <div class="graph__section">
+    <div class="graph__info" *ngIf="minValue && maxValue">
+      <div class="graph__info-element">
+        <div class="graph__info-subelement">
+          <span class="graph__info-subelement-title">Fecha Inicial:</span> {{minValue.x | date}}
+        </div>
+        <div class="graph__info-subelement">
+          <span class="graph__info-subelement-title">Valor: </span>{{minValue.y | currency}}
+        </div>
+      </div>
+      <div class="graph__info-element">
+        <div class="graph__info-subelement">
+          <span class="graph__info-subelement-title">Fecha Actual:</span> {{maxValue.x | date}}
+        </div>
+        <div class="graph__info-subelement">
+          <span class="graph__info-subelement-title">Valor: </span>{{maxValue.y | currency}}
+        </div>
+      </div>
+      <div class="graph__info-element">
+        <div class="graph__info-subelement">
+          <span class="graph__info-subelement-title graph__info-profit">Tiempo transcurrido: </span> 123dias
+        </div>
+        <div class="graph__info-profit">
+          Ganancia:<span [ngClass]="{'graph__info-profit-green': profits >= 0, 'graph__info-profit-red' : profits < 0}">{{profits | currency}}</span>
+        </div>
+      </div>
+    </div>
     <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}" (chartInstance)="getChartInstance($event)"></canvasjs-chart>
   </div>
 </div>

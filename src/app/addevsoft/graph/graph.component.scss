@@ -12,6 +12,44 @@
   padding: 1rem;
 }
 
+.graph__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.graph__info-element {
+  border-radius: 1.25rem;
+  border: 2.5px solid var(--first-color);
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+}
+
+.graph__info-subelement {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.graph__info-subelement-title {
+  color: var(--title-color);
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+.graph__info-profit {
+  display: flex;
+  justify-content: center;
+}
+.graph__info-profit-green {
+  color: green;
+}
+
+.graph__info-profit-red {
+  color: red;
+}
+
 @media screen and (min-width: 576px) {
   .graph__section {
     width: 60%;
