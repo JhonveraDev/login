@@ -15,4 +15,12 @@ export class HeaderComponent {
     this._authService.loggedOut();
     this._router.navigate(['login']);
   }
+
+  UpdateData() {
+    this._router.navigate(['update-data']);
+  }
+
+  Graph() {
+    this._router.navigate(['graph']);
+  }
 }

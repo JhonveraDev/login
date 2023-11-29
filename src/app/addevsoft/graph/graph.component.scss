@@ -30,6 +30,7 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  align-items: center;
 }
 
 .graph__info-subelement-title {
@@ -47,7 +48,7 @@
 }
 
 .graph__info-profit-red {
-  color: red;
+  color: rgb(114, 32, 32);
 }
 
 @media screen and (min-width: 576px) {

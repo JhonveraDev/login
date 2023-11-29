@@ -1,8 +1,39 @@
+
 <div class="header">
+  <div>
+    <label for="btn-nav" class="btn-nav">
+      <img src="./../../../assets/menu.svg" alt="bg-img-menu" class="btn-nav-menu">
+    </label>
+    <input type="checkbox" id="btn-nav">
+    <nav class="nav__container">
+      <ul class="navigation">
+        <li class="navigation__item" (click)="Graph()"><a>Gráfica</a></li>
+        <li class="navigation__item" (click)="UpdateData()"><a>Perfil</a></li>
+      </ul>
+      <ul class="navigation">
+        <li class="navigation__item" (click)="logOut()" ><a>Salir</a></li>
+      </ul>
+    </nav>
+  </div>
+
   <div class="header__info">
     <h1 class="header__title">
       <span>BIENVENIDO, {{ name | uppercase }}</span>
     </h1>
   </div>
-  <button class="logout__button logout__button-ghost" (click)="logOut()">Salir</button>
+  <!-- <button class="logout__button logout__button-ghost" (click)="logOut()">Salir</button> -->
 </div>
+<!-- <header class="main-header">
+  <label for="btn-nav" class="btn-nav"><i class="fas fa-bars"></i></label>
+  <input type="checkbox" id="btn-nav">
+
+  <nav>
+    <ul class="navigation">
+      <li><a href="">Home</a></li>
+      <li><a href="">Servicios</a></li>
+      <li><a href="">Nosotros</a></li>
+      <li><a href="">Contacto</a></li>
+    </ul>
+  </nav>
+
+</header> -->

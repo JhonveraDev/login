@@ -23,8 +23,8 @@
         <div class="graph__info-subelement">
           <span class="graph__info-subelement-title graph__info-profit">Tiempo transcurrido: </span> 123dias
         </div>
-        <div class="graph__info-profit">
-          Ganancia:<span [ngClass]="{'graph__info-profit-green': profits >= 0, 'graph__info-profit-red' : profits < 0}">{{profits | currency}}</span>
+        <div class="graph__info-subelement">
+          <span class="graph__info-subelement-title graph__info-profit">Ganancia: </span><span [ngClass]="{'graph__info-profit-green': profits >= 0, 'graph__info-profit-red' : profits < 0}">{{profits | currency}}</span>
         </div>
       </div>
     </div>

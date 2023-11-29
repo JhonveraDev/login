@@ -1,6 +1,4 @@
 .header {
-  display: flex;
-  justify-content: space-between;
   padding: 1rem;
   background: linear-gradient(180deg, var(--first-color), var(--second-color));
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 0 0;
@@ -32,4 +30,74 @@
   border: 2px solid var(--first-color);
   color: var(--first-color);
   box-shadow: none;
+}
+
+nav{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 200px;
+  top:50px;
+  height:calc(100vh - 50px);
+  background: linear-gradient(180deg, var(--first-color), var(--second-color));
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 0 0;
+  transform:translateX(-100%);
+  transition:.4s ease;
+}
+
+.nav__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navigation__item {
+  cursor: pointer;
+}
+
+.navigation li{
+  list-style:none;
+  width: 100%;
+  border-bottom: 1px solid rgba(255,255,255,.5);
+}
+
+.navigation a{
+  color: #fff;
+  display: block;
+  line-height:3.5;
+  padding: 0 10px;
+  text-decoration:none;
+  transition:.4s ease;
+}
+
+.navigation a:hover{
+  transform:translateX(10%);
+}
+
+#btn-nav{
+  display: none;
+}
+
+#btn-nav:checked ~ nav{
+  transform:translateX(0);
+}
+
+.btn-nav{
+  color:var(--main-color);
+  font-size:30px;
+  position: absolute;
+  left:0;
+  top:0;
+  cursor:pointer;
+  padding:6.5px 15px;
+  transition:.2s ease;
+}
+
+.btn-nav:hover{
+  background:rgba(0,0,0,.3);
+}
+
+.btn-nav-menu {
+  width: 3rem;
+  height: 3rem;
 }
