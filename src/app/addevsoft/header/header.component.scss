@@ -7,13 +7,13 @@
 .header__info {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
 }
 
 .header__title {
   color: var(--greeting-color);
-  font-size: var(--h2-font-size);
+  font-size: 17px;
 }
 
 .logout__button {
@@ -37,9 +37,9 @@ nav{
   left:0;
   top:0;
   width: 200px;
-  top:50px;
-  height:calc(100vh - 50px);
-  background: linear-gradient(180deg, var(--first-color), var(--second-color));
+  top:58px;
+  height:calc(100vh - 58px);
+  background: linear-gradient(238deg, var(--first-color), var(--second-color));
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 0 0;
   transform:translateX(-100%);
   transition:.4s ease;
@@ -83,21 +83,14 @@ nav{
 }
 
 .btn-nav{
-  color:var(--main-color);
-  font-size:30px;
-  position: absolute;
-  left:0;
-  top:0;
+  display: flex;
   cursor:pointer;
-  padding:6.5px 15px;
   transition:.2s ease;
 }
 
-.btn-nav:hover{
-  background:rgba(0,0,0,.3);
+.btn-nav-menu {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-.btn-nav-menu {
-  width: 3rem;
-  height: 3rem;
-}
+
