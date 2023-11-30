@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../service/auth.service';
+import User from '../interfaces/user.interface';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +11,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  constructor(private _router: Router, private _formBuilder: FormBuilder) { }
+
+  user: User = {
+    id: '',
+    name: ''
+  };
+
+  constructor(private _router: Router, private _formBuilder: FormBuilder, private _authService: AuthService) { }
 
   registerForm = this._formBuilder.group({
     name: ['', Validators.required],
@@ -22,8 +30,11 @@ export class RegisterComponent {
     salary: ['', Validators.required],
   })
 
-  onRegister() {
+  async onRegister() {
     if (this.registerForm.valid) {
+      this.user.name = this.registerForm.controls.name.value!;
+      let responseRegister = await this._authService.registerData(this.user)
+      
       this.registerForm.reset();
       Swal.fire({
         icon: "success",
@@ -53,3 +64,4 @@ export class RegisterComponent {
     this._router.navigate(['login']);
   }
 }
+// Firebase Subscribe

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
+import User from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +11,9 @@ export class AuthService {
   fakeName = 'test@gmail.com';
   fakePassword = '123456';
 
-  constructor() { }
+  constructor(private _firestore: Firestore) { }
 
-  isLoggedIn():boolean {
+  isLoggedIn(): boolean {
     return sessionStorage.getItem("token") ? true : false;
   }
 
@@ -27,5 +29,10 @@ export class AuthService {
 
   loggedOut() {
     sessionStorage.removeItem("token");
+  }
+
+  registerData(user: User) {
+    const addRegister = collection(this._firestore, 'clients');
+    return addDoc(addRegister, user);
   }
 }

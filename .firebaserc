@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "addevsoft-login"
+  },
+  "targets": {
+    "addevsoft-login": {
+      "hosting": {
+        "login": [
+          "addevsoft-login"
+        ]
+      }
+    }
+  }
+}
