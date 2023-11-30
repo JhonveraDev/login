@@ -44,11 +44,15 @@
   justify-content: center;
 }
 .graph__info-profit-green {
-  color: green;
+  color: #007f2a;
 }
 
 .graph__info-profit-red {
-  color: rgb(114, 32, 32);
+  color: red;
+}
+
+.signal {
+  display: flex;
 }
 
 @media screen and (min-width: 576px) {
@@ -78,4 +82,10 @@
     border-radius: 1.25rem;
     border: 2.5px solid hsla(244, 16%, 92%, 0.75);
   }
+}
+
+.graph__signal {
+  width: 15px;
+  height: auto;
+  margin-right: 5px;
 }

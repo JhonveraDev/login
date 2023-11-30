@@ -21,10 +21,15 @@
       </div>
       <div class="graph__info-element">
         <div class="graph__info-subelement">
-          <span class="graph__info-subelement-title graph__info-profit">Tiempo transcurrido: </span> 123dias
+          <span class="graph__info-subelement-title graph__info-profit">Tiempo Transcurrido:</span>Dias: {{daysPassed }} - Meses: {{monthsPassed}} - {{ yearsPassed === 1 ? 'año' : 'años' }} : {{yearsPassed}}
         </div>
         <div class="graph__info-subelement">
-          <span class="graph__info-subelement-title graph__info-profit">Ganancia: </span><span [ngClass]="{'graph__info-profit-green': profits >= 0, 'graph__info-profit-red' : profits < 0}">{{profits | currency}}</span>
+          <span class="graph__info-subelement-title graph__info-profit">Ganancia: </span>
+          <span [ngClass]="{'graph__info-profit-green': profits >= 0, 'graph__info-profit-red' : profits < 0}" class="signal">
+            <img src="../../../assets/up.svg" alt="" class="graph__signal" *ngIf="profits >= 0">
+            <img src="../../../assets/down.svg" alt="" class="graph__signal" *ngIf="profits <= 0">
+            {{profits | currency}}
+          </span>
         </div>
       </div>
     </div>
