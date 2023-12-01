@@ -121,6 +121,11 @@ img {
   box-shadow: 0 6px 24px hsla(244, 75%, 48%, 0.5);
 }
 
+.register__button-disabled {
+  background: hsla(244, 16%, 92%, 0.6);
+  cursor: not-allowed;
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 
@@ -208,4 +213,28 @@ img {
 
 .empty-field {
   border: 2px red solid;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  z-index: 999;
+  position: absolute;
+  left: 44%;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
