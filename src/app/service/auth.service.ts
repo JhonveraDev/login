@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore, addDoc, collection } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
+import { Observable, from, map, of } from 'rxjs';
 import User from '../interfaces/user.interface';
 
 @Injectable({
@@ -31,8 +31,16 @@ export class AuthService {
     sessionStorage.removeItem("token");
   }
 
-  registerData(user: User) {
-    const addRegister = collection(this._firestore, 'clients');
-    return addDoc(addRegister, user);
+  registerData(user: User): Observable<any> {
+    try {
+      const addRegister = collection(this._firestore, 'clients');
+      return from(addDoc(addRegister, user)).pipe(
+        map(response => ({ success: true, message: 'Registro exitoso'})));
+    } catch (error) {
+      return of({
+        success: false,
+        message: 'Fallo al registrar al cliente. Por favor, inténtelo de nuevo más tarde o póngase en contacto con el equipo de soporte.'
+      });
+    }
   }
 }

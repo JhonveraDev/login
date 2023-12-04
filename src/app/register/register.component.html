@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" >
   <div class="register__content">
     <img src="./../../assets/bg-login.png" alt="register imagen" class="register__img" />
     <form class="register__form" [formGroup]="registerForm">
@@ -27,7 +27,7 @@
           </div>
           <div>
             <label class="register__label" for="documentNumber">Número de documento</label>
-            <input type="number" formControlName="documentNumber" placeholder="123456789" id="documentNumber" class="register__input" required [ngClass]="{'empty-field': registerForm.get('documentNumber')?.invalid && registerForm.get('documentNumber')?.touched}"/>
+            <input type="text" formControlName="documentNumber" placeholder="123456789" id="documentNumber" class="register__input" required [ngClass]="{'empty-field': registerForm.get('documentNumber')?.invalid && registerForm.get('documentNumber')?.touched}"/>
           </div>
           <div>
             <label class="register__label" for="address">Dirección</label>
@@ -45,10 +45,13 @@
       </div>
       <div>
         <div class="register__buttons">
-          <button class="register__button register__button-ghost" (click)="onRegister()">Registrarse</button>
-          <button type="submit" class="register__button register__button-active" (click)="login()"> ¿Ya tienes una cuenta? </button>
+          <button class="register__button" (click)="onRegister()" [disabled]="loading"
+            [ngClass]="loading ? 'register__button-disabled' : 'register__button-ghost'">Registrarse</button>
+          <button type="submit" class="register__button" (click)="login()" [disabled]="loading"
+            [ngClass]="loading ? 'register__button-disabled' : 'register__button-active'"> ¿Ya tienes una cuenta? </button>
         </div>
       </div>
     </form>
+    <div class="loader" *ngIf="loading"></div>
   </div>
 </div>
