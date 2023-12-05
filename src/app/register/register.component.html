@@ -26,7 +26,6 @@
             <select formControlName="documentType" class="register__input" id="documentType">
               <option *ngFor="let document of documentTypeOptions" [value]="document">{{document}}</option>
             </select>
-            <!-- <input type="text" formControlName="documentType" placeholder="C.C" id="documentType" class="register__input" required [ngClass]="{'empty-field': registerForm.get('documentType')?.invalid && registerForm.get('documentType')?.touched}"/> -->
           </div>
           <div>
             <label class="register__label" for="documentNumber">Número de documento</label>
@@ -42,7 +41,7 @@
           </div>
           <div>
             <label class="register__label" for="salary">Salario</label>
-            <input type="number" formControlName="salary" placeholder="$ $ $" id="salary" class="register__input" required [ngClass]="{'empty-field': registerForm.get('salary')?.invalid && registerForm.get('salary')?.touched}"/>
+            <input type="number" formControlName="salary" (blur)="test()"  placeholder="$ $ $" id="salary" class="register__input" required [ngClass]="{'empty-field': registerForm.get('salary')?.invalid && registerForm.get('salary')?.touched}"/>
           </div>
         </div>
       </div>

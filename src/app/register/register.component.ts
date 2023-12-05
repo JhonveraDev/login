@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { AuthService } from '../service/auth.service';
 import User from '../interfaces/user.interface';
 import { isOlder } from '../validators/born-date-validator';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -28,16 +29,16 @@ export class RegisterComponent {
     salary: 0
   };
 
-  constructor(private _router: Router, private _formBuilder: FormBuilder, private _authService: AuthService) { }
+  constructor(private _router: Router, private _formBuilder: FormBuilder, private _authService: AuthService) {}
 
   registerForm = this._formBuilder.group({
-    name: ['', [Validators.required]],
-    surname: ['', [Validators.required]],
+    name: ['Pepito', [Validators.required, Validators.pattern(/([a-zA-Z]+) ([a-zA-Z]+)/)]],
+    surname: ['Juarez', [Validators.required, Validators.pattern(/([a-zA-Z]+) ([a-zA-Z]+)/)]],
     bornDate: ['', [Validators.required, isOlder.age]],
     documentType: ['C.C', Validators.required],
-    documentNumber: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
-    address: ['', Validators.required],
-    email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+    documentNumber: ['111111111', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
+    address: ['cr cr 227 ccr8c 822 b32', Validators.required],
+    email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
     salary: ['', Validators.required],
   });
 
@@ -46,6 +47,10 @@ export class RegisterComponent {
     const mes = ('0' + (actualDate.getMonth() + 1)).slice(-2);
     const dia = ('0' + actualDate.getDate()).slice(-2);
     return `${año}-${mes}-${dia}`;
+  }
+
+  test() {
+    console.log('Foco perdido')
   }
 
   onRegister() {
@@ -82,8 +87,7 @@ export class RegisterComponent {
           (user.documentType === this.user.documentType && user.documentNumber === this.user.documentNumber));
 
 
-        if (userInList)
-        {
+        if (userInList) {
           this.loading = false;
           this.enableForm();
           this.showModal('error', 'Oops...', 'El usuario ya se encuentra registrado en nuestra base de datos');
