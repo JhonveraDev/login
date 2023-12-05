@@ -31,8 +31,8 @@ export class RegisterComponent {
   constructor(private _router: Router, private _formBuilder: FormBuilder, private _authService: AuthService) { }
 
   registerForm = this._formBuilder.group({
-    name: ['', [Validators.required, Validators.pattern("/^[a-zA-Z]+$/")]],
-    surname: ['', [Validators.required, Validators.pattern("/^[a-zA-Z]+$/")]],
+    name: ['', [Validators.required]],
+    surname: ['', [Validators.required]],
     bornDate: ['', [Validators.required, isOlder.age]],
     documentType: ['C.C', Validators.required],
     documentNumber: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
@@ -49,23 +49,49 @@ export class RegisterComponent {
   }
 
   onRegister() {
-    if (this.registerForm.valid) {
-      this.writeFields();
-      this.disableForm();
-      this.loading = true;
-      this._authService.registerData(this.user).subscribe(response => {
-        this.loading = false;
-        this.enableForm();
-        if (response && response.success) {
-          this.showModal('success', 'Correcto!', response.message);
-          this.registerForm.reset();
-        } else
-          this.showModal('error', 'Oops...', response.message);
-      });
+    if (this.registerForm.valid && !this.loading) {
+      this.existUser();
     } else {
       this.emptyFields();
       this.showModal('error', 'Oops...', 'Por favor, verifica que todos los campos del formulario estén completos!');
     }
+  }
+
+  register() {
+    this._authService.registerData(this.user).subscribe(response => {
+      this.loading = false;
+      this.enableForm();
+      if (response && response.success) {
+        this.showModal('success', 'Correcto!', response.message);
+        this.registerForm.reset();
+      } else
+        this.showModal('error', 'Oops...', response.message);
+    });
+  }
+
+  existUser() {
+    this.writeFields();
+    this.disableForm();
+    this.loading = true;
+    let serviceResponse = false;
+
+    this._authService.getUsers().subscribe(listUser => {
+      if (listUser && !serviceResponse) {
+        serviceResponse = true;
+        let userInList = listUser.find((user: any) => user.email === this.user.email ||
+          (user.documentType === this.user.documentType && user.documentNumber === this.user.documentNumber));
+
+
+        if (userInList)
+        {
+          this.loading = false;
+          this.enableForm();
+          this.showModal('error', 'Oops...', 'El usuario ya se encuentra registrado en nuestra base de datos');
+        }
+        else
+          this.register();
+      }
+    });
   }
 
   showModal(icon: any, title: string, text: string) {

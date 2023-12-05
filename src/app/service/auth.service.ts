@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
-import { Observable, from, map, of } from 'rxjs';
+import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { Observable, from, map, of, switchMap } from 'rxjs';
 import User from '../interfaces/user.interface';
 
 @Injectable({
@@ -29,6 +29,11 @@ export class AuthService {
 
   loggedOut() {
     sessionStorage.removeItem("token");
+  }
+
+  getUsers(): Observable<any> {
+    const conexion = collection(this._firestore, 'clients');
+    return collectionData(conexion) as Observable<any>;
   }
 
   registerData(user: User): Observable<any> {
