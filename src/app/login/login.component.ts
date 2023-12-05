@@ -27,14 +27,15 @@ export class LoginComponent {
   }
 
   login() {
-    this._authService.Login(this.correo, this.password).subscribe(res => {
-      if (res) {
+    this._authService.login(this.correo, this.password).subscribe(res => {
+      if (res && res.user) {
+        sessionStorage.setItem("token", res.user.uid);
         this._router.navigate(['graph']);
       } else {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Your password or name are incorrect!",
+          text: "Su usuario o contraseña son incorrectos",
         });
       }
     });

@@ -32,8 +32,8 @@ export class RegisterComponent {
   constructor(private _router: Router, private _formBuilder: FormBuilder, private _authService: AuthService) {}
 
   registerForm = this._formBuilder.group({
-    name: ['Pepito', [Validators.required, Validators.pattern(/([a-zA-Z]+) ([a-zA-Z]+)/)]],
-    surname: ['Juarez', [Validators.required, Validators.pattern(/([a-zA-Z]+) ([a-zA-Z]+)/)]],
+    name: ['Pepito', Validators.required],
+    surname: ['Juarez', Validators.required],
     bornDate: ['', [Validators.required, isOlder.age]],
     documentType: ['C.C', Validators.required],
     documentNumber: ['111111111', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
@@ -60,6 +60,12 @@ export class RegisterComponent {
       this.emptyFields();
       this.showModal('error', 'Oops...', 'Por favor, verifica que todos los campos del formulario estén completos!');
     }
+  }
+
+  registerUser () {
+    this._authService.registerUser(this.user.email, this.user.documentNumber).subscribe(response => {
+      this.register();
+    });
   }
 
   register() {
@@ -93,7 +99,7 @@ export class RegisterComponent {
           this.showModal('error', 'Oops...', 'El usuario ya se encuentra registrado en nuestra base de datos');
         }
         else
-          this.register();
+          this.registerUser();
       }
     });
   }
