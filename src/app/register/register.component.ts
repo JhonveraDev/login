@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../service/auth.service';
 import User from '../interfaces/user.interface';
-
+import { isOlder } from '../validators/born-date-validator';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,6 +12,10 @@ import User from '../interfaces/user.interface';
 })
 export class RegisterComponent {
   loading: boolean = false;
+  dateMin: string = '1943-01-01';
+  actualDate = new Date();
+  dateMax = this.formatDate(this.actualDate);
+  documentTypeOptions: string[] = ['C.C', 'Tarjeta de Identidad', 'Pasaporte', 'Acta de Nacimiento', 'Cédula Profesional'];
   user: User = {
     id: '',
     name: '',
@@ -24,18 +28,25 @@ export class RegisterComponent {
     salary: 0
   };
 
-  constructor(private _router: Router, private _formBuilder: FormBuilder, private _authService: AuthService) {}
+  constructor(private _router: Router, private _formBuilder: FormBuilder, private _authService: AuthService) { }
 
   registerForm = this._formBuilder.group({
-    name: ['', Validators.required],
-    surname: ['', Validators.required],
-    bornDate: ['', Validators.required],
-    documentType: ['', Validators.required],
-    documentNumber: ['', Validators.required],
+    name: ['', [Validators.required, Validators.pattern("/^[a-zA-Z]+$/")]],
+    surname: ['', [Validators.required, Validators.pattern("/^[a-zA-Z]+$/")]],
+    bornDate: ['', [Validators.required, isOlder.age]],
+    documentType: ['C.C', Validators.required],
+    documentNumber: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
     address: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     salary: ['', Validators.required],
   });
+
+  private formatDate(actualDate: Date): string {
+    const año = actualDate.getFullYear();
+    const mes = ('0' + (actualDate.getMonth() + 1)).slice(-2);
+    const dia = ('0' + actualDate.getDate()).slice(-2);
+    return `${año}-${mes}-${dia}`;
+  }
 
   onRegister() {
     if (this.registerForm.valid) {
@@ -58,7 +69,7 @@ export class RegisterComponent {
   }
 
   showModal(icon: any, title: string, text: string) {
-    Swal.fire({icon, title,text,});
+    Swal.fire({ icon, title, text, });
   }
 
   emptyFields() {
@@ -74,7 +85,7 @@ export class RegisterComponent {
     this._router.navigate(['login']);
   }
 
-  writeFields () {
+  writeFields() {
     this.user.name = this.registerForm.controls.name.value!;
     this.user.surname = this.registerForm.controls.surname.value!;
     this.user.bornDate = this.registerForm.controls.bornDate.value!;

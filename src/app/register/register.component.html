@@ -19,15 +19,18 @@
           </div>
           <div>
             <label class="register__label" for="bornDate">Fecha de nacimiento</label>
-            <input type="date" formControlName="bornDate" placeholder="01/01/2000" id="bornDate" class="register__input" required [ngClass]="{'empty-field': registerForm.get('bornDate')?.invalid && registerForm.get('bornDate')?.touched}"/>
+            <input type="date" formControlName="bornDate" placeholder="01/01/2000" id="bornDate" class="register__input" [min]="dateMin" [max]="dateMax" required [ngClass]="{'empty-field': registerForm.get('bornDate')?.invalid && registerForm.get('bornDate')?.touched}"/>
           </div>
           <div>
             <label class="register__label" for="documentType">Tipo de documento</label>
-            <input type="text" formControlName="documentType" placeholder="C.C" id="documentType" class="register__input" required [ngClass]="{'empty-field': registerForm.get('documentType')?.invalid && registerForm.get('documentType')?.touched}"/>
+            <select formControlName="documentType" class="register__input" id="documentType">
+              <option *ngFor="let document of documentTypeOptions" [value]="document">{{document}}</option>
+            </select>
+            <!-- <input type="text" formControlName="documentType" placeholder="C.C" id="documentType" class="register__input" required [ngClass]="{'empty-field': registerForm.get('documentType')?.invalid && registerForm.get('documentType')?.touched}"/> -->
           </div>
           <div>
             <label class="register__label" for="documentNumber">Número de documento</label>
-            <input type="text" formControlName="documentNumber" placeholder="123456789" id="documentNumber" class="register__input" required [ngClass]="{'empty-field': registerForm.get('documentNumber')?.invalid && registerForm.get('documentNumber')?.touched}"/>
+            <input type="text" formControlName="documentNumber" placeholder="1234567890" id="documentNumber" class="register__input" maxlength="10" required [ngClass]="{'empty-field': registerForm.get('documentNumber')?.invalid && registerForm.get('documentNumber')?.touched}"/>
           </div>
           <div>
             <label class="register__label" for="address">Dirección</label>
