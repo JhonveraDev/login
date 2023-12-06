@@ -27,8 +27,7 @@ export class AuthService {
   registerData(user: User): Observable<any> {
     try {
       const addRegister = collection(this._firestore, 'clients');
-      return from(addDoc(addRegister, user)).pipe(
-        map(response => ({ success: true, message: 'Registro exitoso'})));
+      return from(addDoc(addRegister, user)).pipe(map(() => ({ success: true, message: 'Registro exitoso'})));
     } catch (error) {
       return of({
         success: false,
@@ -38,13 +37,6 @@ export class AuthService {
   }
 
   registerUser(email: string, password: any): Observable<any> {
-    try {
-      return from(this._authFire.createUserWithEmailAndPassword(email, password));
-    } catch (error) {
-      return of({
-        success: false,
-        message: 'Error al crear el usuario'
-      });
-    }
+    return from(this._authFire.createUserWithEmailAndPassword(email, password));
   }
 }

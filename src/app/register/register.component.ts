@@ -56,10 +56,10 @@ export class RegisterComponent {
     this.writeFields();
     this.disableForm();
     this.loading = true;
-    this._authService.registerUser(this.user.email, this.user.documentNumber).subscribe(response => {
+    this._authService.registerUser(this.user.email, this.user.documentNumber).subscribe(() => {
       this.registerData();
     },
-    error => {
+    () => {
       this.loading = false;
       this.enableForm();
       this.showModal('error', 'Oops...', 'El usuario ya se encuentra registrado en nuestra base de datos');
@@ -94,7 +94,7 @@ export class RegisterComponent {
   }
 
   showModal(icon: any, title: string, text: string) {
-    Swal.fire({ icon, title, text, });
+    Swal.fire({ icon, title, text });
   }
 
   emptyFields() {
