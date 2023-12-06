@@ -14,16 +14,10 @@ export class LoginComponent {
   disabledButton: boolean = true;
   password: any = '';
   correo: any = '';
-  // faEye: any = faEye;
-  // faLock: any = faLock;
   showEye: boolean = true;
 
   constructor(private _router: Router, private _authService: AuthService) {
     sessionStorage.removeItem("token");
-  }
-
-  disabledSubmit() {
-    return this.password && this.correo;
   }
 
   login() {
@@ -31,14 +25,19 @@ export class LoginComponent {
       if (res && res.user) {
         sessionStorage.setItem("token", res.user.uid);
         this._router.navigate(['graph']);
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Su usuario o contraseña son incorrectos",
-        });
       }
+    },
+    (error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Su usuario o contraseña son incorrectos",
+      });
     });
+  }
+
+  disabledSubmit() {
+    return this.password && this.correo;
   }
 
   toggleEye() {
