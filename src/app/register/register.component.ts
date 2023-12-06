@@ -30,8 +30,8 @@ export class RegisterComponent {
   };
 
   registerForm = this._formBuilder.group({
-    name: ['', [Validators.required]],
-    surname: ['', [Validators.required]],
+    name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)+$/)]],
+    surname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)+$/)]],
     bornDate: ['', [Validators.required, isOlder.age]],
     documentType: ['C.C', Validators.required],
     documentNumber: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
@@ -60,11 +60,11 @@ export class RegisterComponent {
       this.user.id = response.user.uid;
       this.registerData();
     },
-    () => {
-      this.loading = false;
-      this.enableForm();
-      this.showModal('error', 'Oops...', 'El usuario ya se encuentra registrado en nuestra base de datos');
-    });
+      () => {
+        this.loading = false;
+        this.enableForm();
+        this.showModal('error', 'Oops...', 'El usuario ya se encuentra registrado en nuestra base de datos');
+      });
   }
 
   registerData() {
