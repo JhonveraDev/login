@@ -24,7 +24,10 @@ export class LoginComponent {
     this._authService.login(this.correo, this.password).subscribe(res => {
       if (res && res.user) {
         sessionStorage.setItem("token", res.user.uid);
-        this._router.navigate(['graph']);
+        this._authService.writeDataById(sessionStorage.getItem("token")).subscribe(response => {
+          if(response.login)
+            this._router.navigate(['graph']);
+        });
       }
     },
     (error) => {

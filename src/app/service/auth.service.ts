@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, getDoc, setDoc } from '@angular/fire/firestore';
 
 import { Observable, from, map, of, switchMap } from 'rxjs';
 import User from '../interfaces/user.interface';
@@ -9,6 +9,18 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   providedIn: 'root'
 })
 export class AuthService {
+
+  user: User = {
+    id: '',
+    name: '',
+    surname: '',
+    bornDate: '',
+    documentType: '',
+    documentNumber: 0,
+    address: '',
+    email: '',
+    salary: 0
+  };
 
   constructor(private _firestore: Firestore, private _authFire: AngularFireAuth) { }
 
@@ -24,10 +36,10 @@ export class AuthService {
     sessionStorage.removeItem("token");
   }
 
-  registerData(user: User): Observable<any> {
+  registerData(user: User, uid: any): Observable<any> {
     try {
-      const addRegister = collection(this._firestore, 'clients');
-      return from(addDoc(addRegister, user)).pipe(map(() => ({ success: true, message: 'Registro exitoso'})));
+      const addRegister = setDoc(doc(this._firestore, 'clients', uid), {...user});
+      return from(addRegister).pipe(map(() => ({ success: true, message: 'Registro exitoso'})));
     } catch (error) {
       return of({
         success: false,
@@ -38,5 +50,23 @@ export class AuthService {
 
   registerUser(email: string, password: any): Observable<any> {
     return from(this._authFire.createUserWithEmailAndPassword(email, password));
+  }
+
+  getDataById(uid: any): Observable<any> {
+    const docRef = doc(this._firestore, 'clients', uid);
+    return from(getDoc(docRef));
+  }
+
+  writeDataById(uid: any): Observable<any> {
+    return this.getDataById(uid).pipe(
+      map((response) => {
+        this.user = response.data();
+        return { login: true };
+      })
+    );
+  }
+
+  getUser() {
+    return this.user;
   }
 }

@@ -30,8 +30,8 @@ export class RegisterComponent {
   };
 
   registerForm = this._formBuilder.group({
-    name: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+(?: [a-zA-Z]+)+$')]],
-    surname: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+(?: [a-zA-Z]+)+$')]],
+    name: ['', [Validators.required]],
+    surname: ['', [Validators.required]],
     bornDate: ['', [Validators.required, isOlder.age]],
     documentType: ['C.C', Validators.required],
     documentNumber: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
@@ -56,7 +56,8 @@ export class RegisterComponent {
     this.writeFields();
     this.disableForm();
     this.loading = true;
-    this._authService.registerUser(this.user.email, this.user.documentNumber).subscribe(() => {
+    this._authService.registerUser(this.user.email, this.user.documentNumber).subscribe(response => {
+      this.user.id = response.user.uid;
       this.registerData();
     },
     () => {
@@ -67,7 +68,7 @@ export class RegisterComponent {
   }
 
   registerData() {
-    this._authService.registerData(this.user).subscribe(response => {
+    this._authService.registerData(this.user, this.user.id).subscribe(response => {
       this.loading = false;
       this.enableForm();
       if (response && response.success) {

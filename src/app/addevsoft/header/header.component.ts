@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import User from 'src/app/interfaces/user.interface';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -7,9 +8,28 @@ import { AuthService } from 'src/app/service/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
-  name: string = 'Pepito Perez';
+export class HeaderComponent implements OnInit{
+  user: User = {
+    id: '',
+    name: '',
+    surname: '',
+    bornDate: '',
+    documentType: '',
+    documentNumber: 0,
+    address: '',
+    email: '',
+    salary: 0
+  };
+
   constructor(private _router: Router, private _authService: AuthService) {}
+
+  ngOnInit() {
+    this.getData();
+  }
+
+  getData() {
+    this.user = this._authService.getUser();
+  }
 
   logOut() {
     this._authService.loggedOut();
