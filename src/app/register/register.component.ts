@@ -32,12 +32,12 @@ export class RegisterComponent {
   constructor(private _router: Router, private _formBuilder: FormBuilder, private _authService: AuthService) {}
 
   registerForm = this._formBuilder.group({
-    name: ['Pepito', Validators.required],
-    surname: ['Juarez', Validators.required],
+    name: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+(?: [a-zA-Z]+)+$')]],
+    surname: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+(?: [a-zA-Z]+)+$')]],
     bornDate: ['', [Validators.required, isOlder.age]],
     documentType: ['C.C', Validators.required],
-    documentNumber: ['111111111', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
-    address: ['cr cr 227 ccr8c 822 b32', Validators.required],
+    documentNumber: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
+    address: ['', Validators.required],
     email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
     salary: ['', Validators.required],
   });
