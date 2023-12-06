@@ -10,44 +10,18 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class AuthService {
 
-  fakeName = 'test@gmail.com';
-  fakePassword = '123456';
-
   constructor(private _firestore: Firestore, private _authFire: AngularFireAuth) { }
 
   isLoggedIn(): boolean {
     return sessionStorage.getItem("token") ? true : false;
   }
 
-  // Login(name: string, password: string): Observable<boolean> {
-  //   // const auth = getAuth
-  //   if (name === this.fakeName && password === this.fakePassword) {
-  //     sessionStorage.setItem("token", "true");
-  //     return of(true);
-  //   } else {
-  //     this.loggedOut();
-  //     return of(false);
-  //   }
-  // }
-
-  login (email: string, password: string): Observable<any> {
-    try {
-      return from(this._authFire.signInWithEmailAndPassword(email, password));
-    } catch (error) {
-      return of({
-        success: false,
-        message: 'Su usuario o contraseña son incorrectos'
-      });
-    }
+  login (email: string, password: any): Observable<any> {
+    return from(this._authFire.signInWithEmailAndPassword(email, password));
   }
 
   loggedOut() {
     sessionStorage.removeItem("token");
-  }
-
-  getUsers(): Observable<any> {
-    const conexion = collection(this._firestore, 'clients');
-    return collectionData(conexion) as Observable<any>;
   }
 
   registerData(user: User): Observable<any> {
