@@ -18,7 +18,9 @@ export class HeaderComponent implements OnInit{
     documentNumber: 0,
     address: '',
     email: '',
-    salary: 0
+    salary: 0,
+    password: '',
+    confirmPassword: ''
   };
 
   constructor(private _router: Router, private _authService: AuthService) {}

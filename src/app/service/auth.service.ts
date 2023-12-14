@@ -19,7 +19,9 @@ export class AuthService {
     documentNumber: 0,
     address: '',
     email: '',
-    salary: 0
+    salary: 0,
+    password: '',
+    confirmPassword: ''
   };
 
   constructor(private _firestore: Firestore, private _authFire: AngularFireAuth) { }
