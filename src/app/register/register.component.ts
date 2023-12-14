@@ -40,8 +40,8 @@ export class RegisterComponent {
     address: ['', Validators.required],
     email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
     salary: ['', Validators.required],
-    password: ['', Validators.required],
-    confirmPassword: ['', Validators.required]
+    password: ['', [Validators.required, Validators.minLength(5)]],
+    confirmPassword: ['', [Validators.required, Validators.minLength(5)]]
   });
 
   constructor(private _router: Router, private _formBuilder: FormBuilder, private _authService: AuthService) {

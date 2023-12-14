@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { isOlder } from 'src/app/validators/born-date-validator';
 
 @Component({
   selector: 'app-update-data',
@@ -13,14 +14,16 @@ export class UpdateDataComponent {
   constructor(private _router: Router, private _formBuilder: FormBuilder) { }
 
   updateForm = this._formBuilder.group({
-    name: ['', Validators.required],
-    surname: ['', Validators.required],
-    bornDate: ['', Validators.required],
-    documentType: ['', Validators.required],
-    documentNumber: ['', Validators.required],
+    name: ['', [Validators.required, Validators.pattern(/^([a-zA-ZáéíóúüÁÉÍÓÚÜñÑ]{2,60}[\,\-\.]{0,1}[\s]{0,1}){1,3}$/)]],
+    surname: ['', [Validators.required, Validators.pattern(/^([a-zA-ZáéíóúüÁÉÍÓÚÜñÑ]{2,60}[\,\-\.]{0,1}[\s]{0,1}){1,3}$/)]],
+    bornDate: ['', [Validators.required, isOlder.age]],
+    documentType: ['C.C', Validators.required],
+    documentNumber: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
     address: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
     salary: ['', Validators.required],
+    password: ['', [Validators.required, Validators.minLength(5)]],
+    confirmPassword: ['', [Validators.required, Validators.minLength(5)]]
   })
 
   onUpdate() {

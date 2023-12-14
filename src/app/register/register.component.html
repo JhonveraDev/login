@@ -45,11 +45,11 @@
           </div>
           <div>
             <label class="register__label" for="password">Contraseña</label>
-            <input type="password" formControlName="password" placeholder="* * *" id="password" class="register__input" required [ngClass]="{'empty-field': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}"/>
+            <input type="password" formControlName="password" placeholder="* * *" id="password" minlength="5" class="register__input" required [ngClass]="{'empty-field': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}"/>
           </div>
           <div>
             <label class="register__label" for="confirmPassword">Confirmar Contraseña</label>
-            <input type="password" formControlName="confirmPassword" placeholder="* * *" id="confirmPassword" class="register__input" required [ngClass]="{'empty-field': registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched}"/>
+            <input type="password" formControlName="confirmPassword" placeholder="* * *" id="confirmPassword" minlength="5" class="register__input" required [ngClass]="{'empty-field': registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched}"/>
           </div>
         </div>
       </div>
@@ -62,6 +62,6 @@
         </div>
       </div>
     </form>
-    <div class="loader" *ngIf="loading"></div>
+    <div class="loader" *ngIf="loading"></div> 
   </div>
 </div>
