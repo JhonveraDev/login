@@ -9,7 +9,7 @@
         <div class="update__inputs">
           <div>
             <label class="update__label" for="name">Nombre</label>
-            <input type="text" formControlName="name" placeholder="Nombre" id="name" class="update__input" required [ngClass]="{'empty-field': updateForm.get('name')?.invalid && updateForm.get('name')?.touched}"/>
+            <input type="text" formControlName="name" id="name" class="update__input" required [ngClass]="{'empty-field': updateForm.get('name')?.invalid && updateForm.get('name')?.touched}"/>
           </div>
           <div>
             <label class="update__label" for="surname">Apellidos</label>

@@ -9,7 +9,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   providedIn: 'root'
 })
 export class AuthService {
-
+  Place = []
   user: User = {
     id: '',
     name: '',
@@ -27,21 +27,21 @@ export class AuthService {
   constructor(private _firestore: Firestore, private _authFire: AngularFireAuth) { }
 
   isLoggedIn(): boolean {
-    return sessionStorage.getItem("token") ? true : false;
+    return localStorage.getItem("token") ? true : false;
   }
 
-  login (email: string, password: any): Observable<any> {
+  login(email: string, password: any): Observable<any> {
     return from(this._authFire.signInWithEmailAndPassword(email, password));
   }
 
   loggedOut() {
-    sessionStorage.removeItem("token");
+    localStorage.removeItem("token");
   }
 
   registerData(user: User, uid: any): Observable<any> {
     try {
-      const addRegister = setDoc(doc(this._firestore, 'clients', uid), {...user});
-      return from(addRegister).pipe(map(() => ({ success: true, message: 'Registro exitoso'})));
+      const addRegister = setDoc(doc(this._firestore, 'clients', uid), { ...user });
+      return from(addRegister).pipe(map(() => ({ success: true, message: 'Registro exitoso' })));
     } catch (error) {
       return of({
         success: false,
@@ -62,13 +62,22 @@ export class AuthService {
   writeDataById(uid: any): Observable<any> {
     return this.getDataById(uid).pipe(
       map((response) => {
-        this.user = response.data();
+        this.setUser(response.data());
         return { login: true };
       })
     );
   }
 
+  setUser(response:any) {
+    this.user = response;
+  }
+
   getUser() {
     return this.user;
+  }
+
+  getPlaces(): Observable<User[]> {
+    const placeRef = collection(this._firestore, 'clients');
+    return collectionData(placeRef, { idField: 'id' }) as Observable<User[]>
   }
 }
