@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import User from 'src/app/interfaces/user.interface';
 import { AuthService } from 'src/app/service/auth.service';
 
@@ -9,6 +10,7 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  public isFirstTime: boolean = true;
   user: User = {
     id: '',
     name: '',
@@ -23,7 +25,7 @@ export class HeaderComponent implements OnInit {
     confirmPassword: ''
   };
 
-  constructor(private _router: Router, private _authService: AuthService) { }
+  constructor(private _router: Router, private _authService: AuthService, private _translateService: TranslateService) { }
 
   ngOnInit() {
     this.getData();
@@ -50,5 +52,15 @@ export class HeaderComponent implements OnInit {
 
   Graph() {
     this._router.navigate(['graph']);
+  }
+
+  ChangeLan() {
+      const currentLang = this._translateService.currentLang;
+      if (currentLang === 'es')
+        this._translateService.setDefaultLang('en');
+      else
+        this._translateService.setDefaultLang('es');
+
+      this._translateService.use(this._translateService.getDefaultLang());
   }
 }

@@ -7,8 +7,9 @@
     <input type="checkbox" id="btn-nav">
     <nav class="nav__container">
       <ul class="navigation">
-        <li class="navigation__item" (click)="Graph()"><a>Gráfica</a></li>
-        <li class="navigation__item" (click)="UpdateData()"><a>Actualizar Datos</a></li>
+        <li class="navigation__item" (click)="Graph()"><a>{{'HEADER.GRAPH' | translate}}</a></li>
+        <li class="navigation__item" (click)="UpdateData()"><a>{{'HEADER.UPDATE_DATA' | translate}}</a></li>
+        <li class="navigation__item" (click)="ChangeLan()"><a>{{'HEADER.SWITCH_LAN' | translate}}</a></li>
       </ul>
       <ul class="navigation">
         <li class="navigation__item" (click)="logOut()" ><a>Cerrar Sesión</a></li>

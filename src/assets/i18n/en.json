@@ -1,0 +1,11 @@
+{
+  "LOGIN": {
+    "BTN_LOGIN": "Login",
+    "BTN_REGISTER": "Register"
+  },
+  "HEADER": {
+    "SWITCH_LAN" : "Switch language",
+    "UPDATE_DATA" : "Update data",
+    "GRAPH": "Graph"
+  }
+}
