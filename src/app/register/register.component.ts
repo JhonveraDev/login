@@ -44,12 +44,13 @@ export class RegisterComponent {
   }
 
   onRegister() {
-    if (this.registerForm.valid && !this.loading) {
-      this.registerUser();
-    } else {
-      this.emptyFields();
-      this.showModal('error', 'Oops...', 'Por favor, verifica que todos los campos del formulario estén completos!');
-    }
+    this.registerUser();
+    // if (this.registerForm.valid && !this.loading) {
+    //   this.registerUser();
+    // } else {
+    //   this.emptyFields();
+    //   this.showModal('error', 'Oops...', 'Por favor, verifica que todos los campos del formulario estén completos!');
+    // }
   }
 
   registerUser() {
@@ -57,8 +58,11 @@ export class RegisterComponent {
     this.disableForm();
     this.loading = true;
     this._authService.registerUser(this.user.email, this.user.documentNumber).subscribe(response => {
-      this.user.id = response.user.uid;
-      this.registerData();
+      if (response.user) {
+        response.user.sendEmailVerification();
+        this.user.id = response.user.uid;
+        this.registerData();
+      }
     },
       () => {
         this.loading = false;
@@ -72,7 +76,7 @@ export class RegisterComponent {
       this.loading = false;
       this.enableForm();
       if (response && response.success) {
-        this.showModal('success', 'Correcto!', response.message);
+        this.showModal('success', 'Correcto!', response.message + 'Por favor confirmar la dirección de correo');
         this.registerForm.reset();
       } else
         this.showModal('error', 'Oops...', response.message);

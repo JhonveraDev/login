@@ -22,7 +22,10 @@ export class LoginComponent {
 
   login() {
     this._authService.login(this.correo, this.password).subscribe(res => {
-      if (res && res.user) {
+      if (res && !res.user.multiFactor.user.emailVerified) {
+        this.showModal('error', 'Oops...', 'El email no ha sido verificado');
+      }
+      else {
         sessionStorage.setItem("token", res.user.uid);
         this._authService.writeDataById(sessionStorage.getItem("token")).subscribe(response => {
           if(response.login)
@@ -31,11 +34,7 @@ export class LoginComponent {
       }
     },
     (error) => {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Su usuario o contraseña son incorrectos",
-      });
+      this.showModal('error', 'Oops...', 'Su usuario o contraseña son incorrectos');
     });
   }
 
@@ -49,5 +48,9 @@ export class LoginComponent {
 
   register() {
     this._router.navigate(['register']);
+  }
+
+  showModal(icon: any, title: string, text: string) {
+    Swal.fire({ icon, title, text });
   }
 }
