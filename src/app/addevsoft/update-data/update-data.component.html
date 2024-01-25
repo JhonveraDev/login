@@ -9,7 +9,7 @@
         <div class="update__inputs">
           <div>
             <label class="update__label" for="name">Nombre</label>
-            <input type="text" formControlName="name" placeholder="Nombre" id="name" class="update__input" required [ngClass]="{'empty-field': updateForm.get('name')?.invalid && updateForm.get('name')?.touched}"/>
+            <input type="text" formControlName="name" id="name" class="update__input" required [ngClass]="{'empty-field': updateForm.get('name')?.invalid && updateForm.get('name')?.touched}"/>
           </div>
           <div>
             <label class="update__label" for="surname">Apellidos</label>
@@ -40,6 +40,14 @@
           <div>
             <label class="update__label" for="salary">Salario</label>
             <input type="number" formControlName="salary" placeholder="$ $ $" id="salary" class="update__input" required [ngClass]="{'empty-field': updateForm.get('salary')?.invalid && updateForm.get('salary')?.touched}"/>
+          </div>
+          <div>
+            <label class="update__label" for="password">Contraseña</label>
+            <input type="password" formControlName="password" placeholder="* * *" id="password" minlength="5" class="update__input" required [ngClass]="{'empty-field': updateForm.get('password')?.invalid && updateForm.get('password')?.touched}"/>
+          </div>
+          <div>
+            <label class="update__label" for="confirmPassword">Confirmar Contraseña</label>
+            <input type="password" formControlName="confirmPassword" placeholder="* * *" id="confirmPassword" minlength="5" class="update__input" required [ngClass]="{'empty-field': updateForm.get('confirmPassword')?.invalid && updateForm.get('confirmPassword')?.touched}"/>
           </div>
         </div>
       </div>

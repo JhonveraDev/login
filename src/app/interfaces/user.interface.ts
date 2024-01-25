@@ -7,5 +7,7 @@ export default interface User {
   documentNumber: number,
   address: string,
   email: string,
-  salary: number
+  salary: number,
+  password: string,
+  confirmPassword: string
 }

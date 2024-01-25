@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/service/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
   user: User = {
     id: '',
     name: '',
@@ -18,10 +18,12 @@ export class HeaderComponent implements OnInit{
     documentNumber: 0,
     address: '',
     email: '',
-    salary: 0
+    salary: 0,
+    password: '',
+    confirmPassword: ''
   };
 
-  constructor(private _router: Router, private _authService: AuthService) {}
+  constructor(private _router: Router, private _authService: AuthService) { }
 
   ngOnInit() {
     this.getData();
@@ -29,6 +31,12 @@ export class HeaderComponent implements OnInit{
 
   getData() {
     this.user = this._authService.getUser();
+    if (!this.user.id) {
+      this._authService.getDataById(localStorage.getItem("token")).subscribe(user => {
+        this._authService.setUser(user.data());
+        this.user = this._authService.getUser();
+      });
+    }
   }
 
   logOut() {

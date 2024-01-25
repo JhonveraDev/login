@@ -16,7 +16,7 @@ export class RegisterComponent {
   dateMin: string = '1943-01-01';
   actualDate = new Date();
   dateMax = this.formatDate(this.actualDate);
-  documentTypeOptions: string[] = ['C.C', 'Tarjeta de Identidad', 'Pasaporte', 'Acta de Nacimiento', 'Cédula Profesional'];
+  documentTypeOptions: string[] = ['C.C', 'Tarjeta de Identidad', 'Pasaporte', 'Acta de Nacimiento', 'Cédula Profesional', 'Green Card'];
   user: User = {
     id: '',
     name: '',
@@ -26,31 +26,35 @@ export class RegisterComponent {
     documentNumber: 0,
     address: '',
     email: '',
-    salary: 0
+    salary: 0,
+    password: '',
+    confirmPassword: ''
   };
 
   registerForm = this._formBuilder.group({
-    name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)+$/)]],
-    surname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)+$/)]],
+    name: ['', [Validators.required, Validators.pattern(/^([a-zA-ZáéíóúüÁÉÍÓÚÜñÑ]{2,60}[\,\-\.]{0,1}[\s]{0,1}){1,3}$/)]],
+    surname: ['', [Validators.required, Validators.pattern(/^([a-zA-ZáéíóúüÁÉÍÓÚÜñÑ]{2,60}[\,\-\.]{0,1}[\s]{0,1}){1,3}$/)]],
     bornDate: ['', [Validators.required, isOlder.age]],
     documentType: ['C.C', Validators.required],
     documentNumber: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
     address: ['', Validators.required],
     email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
     salary: ['', Validators.required],
+    password: ['', [Validators.required, Validators.minLength(5)]],
+    confirmPassword: ['', [Validators.required, Validators.minLength(5)]]
   });
 
   constructor(private _router: Router, private _formBuilder: FormBuilder, private _authService: AuthService) {
   }
 
   onRegister() {
-    this.registerUser();
-    // if (this.registerForm.valid && !this.loading) {
-    //   this.registerUser();
-    // } else {
-    //   this.emptyFields();
-    //   this.showModal('error', 'Oops...', 'Por favor, verifica que todos los campos del formulario estén completos!');
-    // }
+    this.writeFields();
+    if (this.registerForm.valid && !this.loading && (this.user.password === this.user.confirmPassword)) {
+      this.registerUser();
+    } else {
+      this.emptyFields();
+      this.showModal('error', 'Oops...', 'Por favor, verifica que todos los campos del formulario estén completos!');
+    }
   }
 
   registerUser() {
@@ -92,6 +96,8 @@ export class RegisterComponent {
     this.user.address = this.registerForm.controls.address.value!;
     this.user.email = this.registerForm.controls.email.value!;
     this.user.salary = Number(this.registerForm.controls.salary.value!);
+    this.user.password = this.registerForm.controls.password.value!;
+    this.user.confirmPassword = this.registerForm.controls.confirmPassword.value!;
   }
 
   login() {
